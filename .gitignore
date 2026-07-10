@@ -1,0 +1,9 @@
+# data / model artifacts are large or regenerated; keep them out of git
+*.csv
+*.pkl
+*.sqlite
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
