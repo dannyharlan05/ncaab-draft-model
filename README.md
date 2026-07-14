@@ -31,9 +31,11 @@ they clear the 4-VORP success bar.
   regression keeps the model interpretable — every prediction breaks down into which
   traits pushed it up or down.
 - **Features.** College advanced box stats, shot-location efficiency (rim / mid / three
-  makes and attempts), size/role, class year, and a **projected draft pick** — a
-  *pre-draft* consensus estimate (mock-board position), used as a signal available before
-  the draft rather than the actual post-draft result, so it doesn't leak the outcome.
+  makes and attempts), size/role, class year, and **draft position** — a strong consensus
+  signal that packs NBA teams' collective evaluation of a prospect into a single number.
+  Layering college production on top of that consensus is what lets the model surface
+  **skills NBA teams have historically undervalued** — prospects whose production points
+  higher than where the draft slotted them.
 - **Class-year adjustment.** Younger prospects (freshmen) get an upside adjustment — the
   same production means more from an 18-year-old than a senior.
 - **Tools built in:** a per-player prediction breakdown (which features drove the rating),
@@ -65,14 +67,14 @@ highly-rated prospects panned out.
 | Source | Provides |
 |---|---|
 | barttorvik / college stats | advanced college box production, size, class year |
-| Pre-draft board | projected draft pick (pre-draft consensus estimate) |
+| Draft data | draft position (a team/scout consensus signal) |
 | NBA advanced stats (VORP) | the success target |
 
 ## Running it
 
-Open `NCAAB_Predictor.ipynb` and run it top to bottom — it loads and merges the college /
-combine / NBA sources, assigns play-style clusters, trains the per-cluster models, and
-scores prospects.
+Open `NCAAB_Predictor.ipynb` and run it top to bottom — it loads and merges the college
+and NBA sources, assigns play-style clusters, trains the per-cluster models, and scores
+prospects.
 
 ```bash
 pip install -r requirements.txt
@@ -81,9 +83,13 @@ jupyter lab NCAAB_Predictor.ipynb
 
 ## Honest limitations
 
-- **Draft prediction is a hard, noisy problem.** College and combine data explain only
-  part of NBA outcomes; the model tilts the odds, it doesn't call individual players with
-  certainty.
+- **Draft prediction is a hard, noisy problem.** College data explains only part of NBA
+  outcomes; the model tilts the odds, it doesn't call individual players with certainty.
+- **Draft position is a consensus feature.** Because the model uses where a player was
+  drafted, it isn't scouting in a vacuum — it starts from NBA teams' collective read and
+  adds college production on top. Its value is in flagging where the two *disagree*
+  (production the market may be underrating), not in claiming to out-scout front offices
+  from scratch.
 - **Small samples per cluster** mean the models are lightly regularized and best read as a
   *ranking* rather than precise probabilities.
 - **The 4-VORP success line is a modeling choice** — a different threshold would reshape
