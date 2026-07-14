@@ -1,4 +1,4 @@
-# NCAAB → NBA Draft Success Predictor
+## NCAAB → NBA Draft Success Predictor
 
 Predicts whether a college prospect will become a **successful NBA player** — defined as
 accumulating **4+ VORP over their first four seasons** — from their college production and
