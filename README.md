@@ -58,9 +58,11 @@ model's underlying skill. AUROC is threshold-independent, so it measures the thi
 actually matters: how well the model separates future hits from misses. **0.78–0.83 is a
 strong result for a problem as noisy as draft outcomes.**
 
-The ratings are also checked against a held-out draft class (2025), comparing them to
-players' actual rookie-year production (VORP), with a look at how the lottery and
-highly-rated prospects panned out.
+On a held-out 2025 draft class, the ratings correlated with actual rookie-year VORP nearly
+twice as strongly as draft position alone (Spearman **r = 0.42 vs 0.24**) — i.e., layering
+college production on top of draft consensus roughly doubled the rank-correlation with
+outcomes, evidence that the production carries signal the market underweights. (One class,
+~50 players, so read it as suggestive rather than definitive.)
 
 ## Data
 
